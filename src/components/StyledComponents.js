@@ -3,14 +3,12 @@ import styled, { keyframes } from "styled-components";
 export const Grid = styled.div`
   font-family: "Roboto", sans-serif;
   display: grid;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: ${props => (props.isSearchBar ? "40px" : "min-content")} 1fr;
   grid-template-areas:
     "h"
     "s";
   height: 100%;
   grid-row-gap: 30px;
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d7d2df' fill-opacity='0.34'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 `;
 
 export const HeaderTemplate = styled.div`
@@ -21,12 +19,12 @@ export const HeaderTemplate = styled.div`
 
 export const Header = styled.h1`
   margin: 0;
-  padding: 0;
+  padding: 20px 0 0 0;
 `;
 
 export const SubHeader = styled.h2`
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 20px;
 `;
 
 export const ShelvesTemplate = styled.div`
@@ -97,6 +95,26 @@ export const SelectWrapper = styled.div`
   border-radius: 100px;
 `;
 
+// Search Bar Template
+
+export const SearchBarWrapper = styled.div`
+  grid-area: h;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+`;
+
+export const SearchBar = styled.input`
+  border: none;
+  background: transparent;
+  font-size: 20px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
 // Books Template
 
 export const BookTitle = styled.h5`
@@ -151,25 +169,27 @@ export const BooksTemplate = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 `;
 
+export const HomeLinkWrapper = styled.div``;
+
 export const AddBookWrapper = styled.div`
   position: fixed;
   bottom: 0;
   right: 0;
   background: #fed330;
-  height: 50px;
-  width: 50px;
-  display: grid;
-  justify-items: center;
-  align-items: center;
+  height: 55px;
+  width: 55px;
   border-radius: 100%;
   margin-right: 15px;
   margin-bottom: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: all 200ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    height: 55px;
-    width: 55px;
+    height: 58px;
+    width: 58px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
   }
 `;

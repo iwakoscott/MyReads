@@ -14,19 +14,8 @@ export default () => (
       <Header>📚 MyReads</Header>
     </HeaderTemplate>
     <Shelves />
-    <AddBookWrapper>
-      <Link
-        to="/search"
-        style={{
-          verticalAlign: "middle",
-          textAlign: "center",
-          textDecoration: "none",
-          margin: "0px",
-          padding: "0px"
-        }}
-      >
-        ➕
-      </Link>
-    </AddBookWrapper>
+    <Link to="/search">
+      <AddBookWrapper>➕</AddBookWrapper>
+    </Link>
   </Grid>
 );

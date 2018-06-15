@@ -35,9 +35,21 @@ class Book extends Component {
     return (
       <BookWrapper>
         <BookTemplate>
-          <BookCover bookCover={book.imageLinks.thumbnail}>
+          <BookCover
+            bookCover={
+              book.imageLinks
+                ? book.imageLinks.thumbnail
+                : "https://use.fontawesome.com/releases/v5.0.13/svgs/solid/question.svg"
+            }
+          >
             <SelectWrapper>
               <Select value={this.state.value} onChange={this.handleOnChange}>
+                <option
+                  defaultChecked={typeof this.state.value === "undefined"}
+                  value="none"
+                >
+                  None
+                </option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
@@ -47,7 +59,8 @@ class Book extends Component {
           <BookDescription>
             <BookTitle>{book.title}</BookTitle>
             <BookAuthor>
-              {book.authors.map(author => <li key={author}>{author}</li>)}
+              {book.authors &&
+                book.authors.map(author => <li key={author}>{author}</li>)}
             </BookAuthor>
           </BookDescription>
         </BookTemplate>
