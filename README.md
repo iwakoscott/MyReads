@@ -1,2 +1,0 @@
-# MyReads
-Created with CodeSandbox
