@@ -1,5 +1,45 @@
 import styled, { keyframes } from "styled-components";
 
+// Modal Components
+
+export const ModalContentWrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr 80px;
+  grid-row-gap: 20px;
+  padding: 5px;
+`;
+
+export const ModalHeaderWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  font-family: "Roboto", sans-serif;
+`;
+
+export const ModalHeader = styled.h1`
+  padding: 0;
+  margin: 0;
+`;
+
+export const ModalBodyWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+`;
+
+export const ModalImageWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 1fr min-content;
+`;
+
+export const ModalImage = styled.img`
+  display: grid;
+  justify-self: center;
+  align-self: center;
+`;
+
+export const ModalText = styled.div`
+  font-family: "Roboto", sans-serif;
+`;
+
 export const Grid = styled.div`
   font-family: "Roboto", sans-serif;
   display: grid;
@@ -139,6 +179,7 @@ export const BookDescription = styled.div`
   align-items: center;
   grid-row-gap: 5px;
   margin-top: 5px;
+  cursor: pointer;
 `;
 
 export const BookAuthor = styled.ul`
@@ -176,20 +217,22 @@ export const AddBookWrapper = styled.div`
   bottom: 0;
   right: 0;
   background: #fed330;
-  height: 55px;
-  width: 55px;
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  font-size: 20px;
   border-radius: 100%;
   margin-right: 15px;
   margin-bottom: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: all 200ms;
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
 
   &:hover {
-    height: 58px;
-    width: 58px;
+    height: 55px;
+    width: 55px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
   }
 `;

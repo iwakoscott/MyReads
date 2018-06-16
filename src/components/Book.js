@@ -44,19 +44,21 @@ class Book extends Component {
           >
             <SelectWrapper>
               <Select value={this.state.value} onChange={this.handleOnChange}>
-                <option
-                  defaultChecked={typeof this.state.value === "undefined"}
-                  value="none"
-                >
-                  None
-                </option>
+                {!this.props.myShelf && (
+                  <option
+                    defaultChecked={typeof this.state.value === "undefined"}
+                    value="none"
+                  >
+                    None
+                  </option>
+                )}
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
               </Select>
             </SelectWrapper>
           </BookCover>
-          <BookDescription>
+          <BookDescription onClick={() => this.props.handleClick(book)}>
             <BookTitle>{book.title}</BookTitle>
             <BookAuthor>
               {book.authors &&
@@ -71,7 +73,8 @@ class Book extends Component {
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,
-  updateBookStatus: PropTypes.func.isRequired
+  updateBookStatus: PropTypes.func.isRequired,
+  myShelf: PropTypes.bool
 };
 
 export default Book;

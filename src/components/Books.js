@@ -3,8 +3,12 @@ import Book from "./Book";
 import { BooksTemplate } from "./StyledComponents";
 import PropTypes from "prop-types";
 
-const Books = ({ children, books }) => (
-  <BooksTemplate>{children(books)}</BooksTemplate>
+const Books = ({ children, books, handleOnClick }) => (
+  <BooksTemplate>
+    {children({
+      books
+    })}
+  </BooksTemplate>
 );
 
 Books.propTypes = {

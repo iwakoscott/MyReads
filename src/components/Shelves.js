@@ -4,16 +4,28 @@ import { update, getAll } from "../utils/booksAPI";
 import { pack } from "../utils/tools";
 import Shelf from "./Shelf";
 import Loading from "./Loading";
+import Modal from "react-responsive-modal";
+import ModalContent from "../components/ModalContent";
 
 const initialState = {
   currentlyReading: [],
   wantToRead: [],
   read: [],
-  isFetching: false
+  isFetching: false,
+  modalIsOpen: false,
+  activeBook: null
 };
 
 class Shelves extends Component {
   state = initialState;
+
+  handleModalClose = () =>
+    this.setState({ modalIsOpen: false, activeBook: null });
+
+  handleClickedBook = book => {
+    // This callback function should be passed down to activate a book modal
+    this.setState({ activeBook: book, modalIsOpen: true });
+  }; // handleClickedBook
 
   componentDidMount() {
     // When component mounts, the component should update the local state with the most up to date
@@ -47,26 +59,44 @@ class Shelves extends Component {
   };
 
   render() {
-    const { currentlyReading, wantToRead, read, isFetching } = this.state;
+    const {
+      currentlyReading,
+      wantToRead,
+      read,
+      isFetching,
+      activeBook
+    } = this.state;
+    console.log(activeBook);
     return isFetching ? (
       <Loading />
     ) : (
       <ShelvesTemplate>
         <Shelf
+          myShelf
           updateBookStatus={this.updateBookStatus}
           title="Currently Reading"
           books={currentlyReading}
+          openModalWith={this.handleClickedBook}
         />
         <Shelf
+          myShelf
           updateBookStatus={this.updateBookStatus}
           title="Want to Read"
           books={wantToRead}
+          openModalWith={this.handleClickedBook}
         />
         <Shelf
+          myShelf
           updateBookStatus={this.updateBookStatus}
           title="Read"
           books={read}
+          openModalWith={this.handleClickedBook}
         />
+        {activeBook !== null && (
+          <Modal onClose={this.handleModalClose} open={this.state.modalIsOpen}>
+            <ModalContent activeBook={activeBook} />
+          </Modal>
+        )}
       </ShelvesTemplate>
     );
   } // render
