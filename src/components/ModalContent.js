@@ -27,7 +27,7 @@ function ModalContent({ activeBook }) {
           <ModalText>
             {typeof activeBook.authors !== "undefined" && <h3>Authors:</h3>}
             <ul>
-              {typeof activeBook.author !== undefined &&
+              {typeof activeBook.author !== "undefined" &&
                 activeBook.authors.map(author => (
                   <li key={author}>{author}</li>
                 ))}

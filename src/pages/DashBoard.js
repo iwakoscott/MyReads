@@ -11,11 +11,15 @@ import { Link } from "react-router-dom";
 export default () => (
   <Grid>
     <HeaderTemplate>
-      <Header>📚 MyReads</Header>
+      <Header>
+        <span role="img">📚</span> MyReads
+      </Header>
     </HeaderTemplate>
     <Shelves />
     <Link to="/search">
-      <AddBookWrapper>➕</AddBookWrapper>
+      <AddBookWrapper>
+        <span role="img">➕</span>
+      </AddBookWrapper>
     </Link>
   </Grid>
 );

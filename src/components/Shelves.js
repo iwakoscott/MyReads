@@ -66,7 +66,6 @@ class Shelves extends Component {
       isFetching,
       activeBook
     } = this.state;
-    console.log(activeBook);
     return isFetching ? (
       <Loading />
     ) : (

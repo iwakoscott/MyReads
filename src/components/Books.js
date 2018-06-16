@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import Book from "./Book";
+import React from "react";
 import { BooksTemplate } from "./StyledComponents";
 import PropTypes from "prop-types";
 

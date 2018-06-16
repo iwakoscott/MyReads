@@ -2,6 +2,8 @@
 ## Author: Satoshi Scott Iwako
 ## Twitter: @theisomorphic
 
+![spongebob reading a book](https://media.giphy.com/media/WoWm8YzFQJg5i/giphy.gif)
+
 ### Getting this awesome book tracking app up and running is simple:
 
 1. clone the repository using <code>git clone https://github.com/iwakoscott/MyReads.git</code>
