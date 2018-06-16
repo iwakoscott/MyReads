@@ -45,14 +45,21 @@ class Shelves extends Component {
 
   // a callback function to be passed down to Shelf children to update any book status on the server
   updateBookStatus = (book, newShelf) => {
-    // optimistically update UI
-
-    // 1. remove book from old shelf and add to new one.
+    let stateToUpdate = {};
     const { shelf: oldShelf, id } = book;
-    const stateToUpdate = {
-      [oldShelf]: this.state[oldShelf].filter(b => b.id !== id),
-      [newShelf]: [...this.state[newShelf], { ...book, shelf: newShelf }]
-    };
+
+    if (newShelf === "none") {
+      stateToUpdate = {
+        [oldShelf]: this.state[oldShelf].filter(b => b.id !== book.id)
+      };
+    } else {
+      // optimistically update UI
+      // 1. remove book from old shelf and add to new one.
+      stateToUpdate = {
+        [oldShelf]: this.state[oldShelf].filter(b => b.id !== id),
+        [newShelf]: [...this.state[newShelf], { ...book, shelf: newShelf }]
+      };
+    }
 
     // 2. update the server with the new changes.
     this.setState(stateToUpdate, () => update(book, newShelf));
@@ -71,21 +78,18 @@ class Shelves extends Component {
     ) : (
       <ShelvesTemplate>
         <Shelf
-          myShelf
           updateBookStatus={this.updateBookStatus}
           title="Currently Reading"
           books={currentlyReading}
           openModalWith={this.handleClickedBook}
         />
         <Shelf
-          myShelf
           updateBookStatus={this.updateBookStatus}
           title="Want to Read"
           books={wantToRead}
           openModalWith={this.handleClickedBook}
         />
         <Shelf
-          myShelf
           updateBookStatus={this.updateBookStatus}
           title="Read"
           books={read}

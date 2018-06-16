@@ -4,13 +4,7 @@ import Books from "./Books";
 import Book from "./Book";
 import PropTypes from "prop-types";
 
-const Shelf = ({
-  updateBookStatus,
-  title,
-  books,
-  openModalWith,
-  myShelf = false
-}) => (
+const Shelf = ({ updateBookStatus, title, books, openModalWith }) => (
   <ShelfTemplate>
     <SubHeader>{title}</SubHeader>
     <Books books={books}>
@@ -21,7 +15,6 @@ const Shelf = ({
             book={book}
             updateBookStatus={updateBookStatus}
             handleClick={openModalWith}
-            myShelf={myShelf}
           />
         ))
       }
@@ -32,8 +25,7 @@ const Shelf = ({
 Shelf.propTypes = {
   updateBookStatus: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  books: PropTypes.array.isRequired,
-  myShelf: PropTypes.bool
+  books: PropTypes.array.isRequired
 };
 
 export default Shelf;
