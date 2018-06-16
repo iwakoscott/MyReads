@@ -110,7 +110,11 @@ class Search extends Component {
               }}
               to="/"
             >
-              <HomeLinkWrapper>🔙</HomeLinkWrapper>
+              <HomeLinkWrapper>
+                <span role="img" aria-label="left arrow">
+                  🔙
+                </span>
+              </HomeLinkWrapper>
             </Link>
           </div>
           <SearchBar
