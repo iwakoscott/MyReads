@@ -12,13 +12,18 @@ export default () => (
   <Grid>
     <HeaderTemplate>
       <Header>
-        <span role="img">📚</span> MyReads
+        <span role="img" aria-label="book stack">
+          📚
+        </span>{" "}
+        MyReads
       </Header>
     </HeaderTemplate>
     <Shelves />
     <Link to="/search">
       <AddBookWrapper>
-        <span role="img">➕</span>
+        <span role="img" aria-label="plus sign">
+          ➕
+        </span>
       </AddBookWrapper>
     </Link>
   </Grid>
