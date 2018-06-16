@@ -1,4 +1,4 @@
-# Udacity Project 1 : MyReads 
+# Udacity React Nanodegree Project 1 : MyReads 
 ## Author: Satoshi Scott Iwako
 ## Twitter: @theisomorphic
 
