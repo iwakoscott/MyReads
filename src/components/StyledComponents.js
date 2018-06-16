@@ -27,7 +27,8 @@ export const ModalBodyWrapper = styled.div`
 
 export const ModalImageWrapper = styled.div`
   display: grid;
-  grid-template-rows: 1fr min-content;
+  grid-row-gap: 20px;
+  grid-template-rows: min-content min-content;
 `;
 
 export const ModalImage = styled.img`
